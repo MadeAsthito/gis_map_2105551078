@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\RestaurantController;
 
 
 /*
@@ -28,4 +29,14 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     /**
       * Silahkan tambahkan route anda disini ...
     */
+    // RESTAURANT API
+    // Get
+    Route::get('restaurants', [RestaurantController::class, 'index']);
+    Route::get('restaurants/{restaurant}', [RestaurantController::class, 'show']);
+    // Post
+    Route::post('restaurants', [RestaurantController::class, 'store']);
+    // Put
+    Route::put('restaurants/{restaurant}', [RestaurantController::class, 'update']);
+    // Delete
+    Route::delete('restaurants/{restaurant}', [RestaurantController::class, 'delete']);
 });
